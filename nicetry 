@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Answer 😄</title>
+
+<style>
+  body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    overflow: hidden;
+    text-align: center;
+    background: #fff;
+  }
+
+  h2 {
+    margin-bottom: 30px;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 12px 28px;
+    margin: 10px;
+    border-radius: 25px;
+    border: none;
+  }
+
+  #yes {
+    background: #4CAF50;
+    color: white;
+  }
+
+  #no {
+    background: #f44336;
+    color: white;
+    position: absolute;
+  }
+
+  #videoBox {
+    display: none;
+    width: 100%;
+  }
+
+  video {
+    width: 90%;
+    max-width: 360px;
+    border-radius: 15px;
+  }
+</style>
+</head>
+
+<body>
+
+<h2 id="question">Do you like me? 😌</h2>
+
+<button id="yes" onclick="playVideo()">YES</button>
+<button id="no">NO</button>
+
+<div id="videoBox">
+  <video id="myVideo" controls autoplay playsinline>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support video.
+  </video>
+</div>
+
+<script>
+  const noBtn = document.getElementById("no");
+
+  function moveButton() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 120);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  noBtn.addEventListener("touchstart", moveButton);
+  noBtn.addEventListener("mouseover", moveButton);
+
+  function playVideo() {
+    document.getElementById("question").style.display = "none";
+    document.getElementById("yes").style.display = "none";
+    document.getElementById("no").style.display = "none";
+    document.getElementById("videoBox").style.display = "block";
+
+    document.getElementById("myVideo").play();
+  }
+</script>
+
+</body>
+</html>
